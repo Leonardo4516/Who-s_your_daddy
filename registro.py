@@ -8,11 +8,11 @@ def cargar_usuarios():
     if os.path.exists(ARCHIVO):
         with open(ARCHIVO, "r") as f:
             return json.load(f)
-    return {}
+    return []
 
 def guardar_usuarios(usuarios):
-    with open(ARCHIVO, "w") as f:
-        json.dump(usuarios, f)
+    with open(ARCHIVO, "w", encoding="utf-8") as f:
+        json.dump(usuarios, f, ensure_ascii=False, indent=4)
 
 usuarios = cargar_usuarios()
 
@@ -24,17 +24,24 @@ def registrar():
         print("Ese usuario ya existe")
         return
     password = input("Contraseña: ")
-    usuarios[user] = password
+
+    dic = {"usuario": user, 
+           "contraseña": password
+        }
+    usuarios.append(dic)
     guardar_usuarios(usuarios)
     print("Usuario registrado con éxito\n")
 
 def login():
+    cargar_usuarios()
     print("=== INICIO DE SESIÓN ===")
     user = input("Usuario: ")
     password = input("Contraseña: ")
     
-    if user in usuarios and usuarios[user] == password:
-        print("Bienvenido", user)
+    for usuario in usuarios:
+        if usuario["usuario"] == user and usuario["contraseña"] == password:
+            print("Bienvenido", user)
+            return user
     else:
         print("Datos incorrectos")
 
