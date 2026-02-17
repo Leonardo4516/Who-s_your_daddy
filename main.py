@@ -6,7 +6,7 @@ def login():
         contraseña = input("Ingrese su contraseña: ")
 
         try:
-            with open("emails.json", "r", encoding="utf-8") as f:
+            with open("usuarios.json", "r", encoding="utf-8") as f:
                 emails = json.load(f)
 
             for u in emails:
