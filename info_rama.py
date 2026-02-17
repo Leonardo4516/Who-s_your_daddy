@@ -13,15 +13,15 @@ def listar_info_arbol():
                 print(f"""
                 ================================
     
-                Nombre: {a}
+                Nombre: {a["nombre"]}
     
-                Certificado de matimonio: {a}
+                Certificado de matimonio: {a["certificado_matrimonio"]}
     
-                Difunto: {a}
+                Difunto: {a["difunto"]}
     
-                Registros parroquiales: {a}
+                Registros parroquiales: {a["registros_parroquiales"]}
     
-                Censos: {a}  
+                Censos: {a["censos"]}  
     
                 ================================
                 """)
