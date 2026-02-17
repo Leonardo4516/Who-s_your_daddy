@@ -1,5 +1,7 @@
 import json
 import os
+import info_rama
+
 
 ARCHIVO = "parientes.json"
 

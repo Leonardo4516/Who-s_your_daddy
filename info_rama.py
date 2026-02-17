@@ -1,5 +1,6 @@
 import os
 import json
+import parientes_info
 
 a = ""
 
