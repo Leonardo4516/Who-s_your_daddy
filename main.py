@@ -1,6 +1,6 @@
 import time
 import json
-import funciones
+from funciones import registrar, agregar_usuario, quitar_persona, actualizar_persona, cargar_usuarios, listado
 
 def login():
     while True:
