@@ -1,6 +1,6 @@
 def cerrar_sesion():
     print("======================================")
-    print("Cerrando sesión...")
+    print("\t Cerrando sesión...")
     print("======================================")
-    print("Sesión cerrada exitosamente.")
+    print("    Sesión cerrada exitosamente.")
     print("======================================")
