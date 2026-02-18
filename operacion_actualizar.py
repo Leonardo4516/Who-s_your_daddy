@@ -1,34 +1,56 @@
+import json
+import os
+
+ARCHIVO = "parientes.json"
+
+def guardar_usuarios(usuarios):
+    with open(ARCHIVO, "w", encoding="utf-8") as f:
+        json.dump(usuarios, f, ensure_ascii=False, indent=4)
+
+def buscar_persona_por_id(personas, persona_id):
+    for persona in personas:
+        if persona.get('id') == persona_id:
+            return persona
+    return None
+
 def actualizar_persona(personas):
-    print("\n--- Actualizar información de una persona ---")
+    print("\n--- Actualizar informacion de una persona ---")
+    
+    if not personas:
+        print("No hay personas registradas")
+        return
+    
     try:
         id_str = input("Ingrese el ID de la persona a actualizar: ")
         id_actualizar = int(id_str)
     except ValueError:
-        print("ID inválido. Debe ser un número.")
+        print("ID invalido. Debe ser un numero.")
         return
 
-    persona = """buscar_persona_por_id"""(personas, id_actualizar)
+    persona = buscar_persona_por_id(personas, id_actualizar)
 
     if persona is None:
-        print(f"No se encontró ninguna persona con ID {id_actualizar}.")
+        print(f"No se encontro ninguna persona con ID {id_actualizar}.")
         return
 
-    print(f"Editando a: {persona['nombre']}")
-    print("Si no desea cambiar un campo, déjelo vacío y presione Enter.\n")
+    print(f"\nEditando a: {persona['nombre']}")
+    print("Si no desea cambiar un campo, dejelo vacio y presione Enter.\n")
 
     nuevo_nombre = input(f"Nuevo nombre (actual: {persona['nombre']}): ")
-    nueva_fecha = input(f"Nueva fecha de nacimiento (actual: {persona.get('fecha_nacimiento', 'N/A')}): ")
-    nuevos_certificados = input(f"Nuevos certificados separados por coma (actual: {', '.join(persona.get('certificados', []))}): ")
+    nueva_edad = input(f"Nueva edad (actual: {persona.get('edad', 'N/A')}): ")
+    nuevo_parentesco = input(f"Nuevo parentesco (actual: {persona.get('parentesco', 'N/A')}): ")
 
-    # Actualizar solo si el usuario escribió algo
     if nuevo_nombre.strip() != "":
         persona["nombre"] = nuevo_nombre.strip()
 
-    if nueva_fecha.strip() != "":
-        persona["fecha_nacimiento"] = nueva_fecha.strip()
+    if nueva_edad.strip() != "":
+        try:
+            persona["edad"] = int(nueva_edad.strip())
+        except ValueError:
+            print("Edad invalida, no se actualizo")
 
-    if nuevos_certificados.strip() != "":
-        lista_certificados = [c.strip() for c in nuevos_certificados.split(",") if c.strip() != ""]
-        persona["certificados"] = lista_certificados
+    if nuevo_parentesco.strip() != "":
+        persona["parentesco"] = nuevo_parentesco.strip()
 
-    print("Información actualizada correctamente.")
+    guardar_usuarios(personas)
+    print("\nInformacion actualizada correctamente.")

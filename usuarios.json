@@ -1,6 +1,10 @@
 [
     {
         "usuario": "Cristian",
-        "contraseña": "So"
+        "contraseÃ±a": "So"
+    },
+    {
+        "usuario": "Samuel",
+        "contraseña": "1234"
     }
 ]
