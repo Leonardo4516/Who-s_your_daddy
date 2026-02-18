@@ -39,17 +39,17 @@ def menu(usuario):
             print("7. salir")
             opcion=int(input("ingrese su opcion: "))
             if opcion==1:
-                registrar()
+                funciones.registrar()
             if opcion==2:
-                agregar_usuario()
+                funciones.agregar_usuario()
             if opcion==3:
-                quitar_persona()
+                funciones.quitar_persona()
             if opcion==4:
-                actualizar_persona()
+                funciones.actualizar_persona()
             if opcion==5:
-                cargar_usuarios()
+                funciones.cargar_usuarios()
             if opcion==6:
-                listado()
+                funciones.listado()
             if opcion==7:
                 print("saliendo del programa...")
                 time.sleep(3)
