@@ -1,6 +1,6 @@
 import json
 import os
-from id import generar_id
+#import id
 
 ARCHIVO = "usuarios.json"
 
@@ -39,7 +39,7 @@ def registrar():
             return
     
     nuevo_usuario = {
-        "id": generar_id(usuarios),
+      #  "id": id.generar_id(usuarios),
         "nombre": nombre,
         "CorreoElectronico": correo,
         "contrasena": contrasena

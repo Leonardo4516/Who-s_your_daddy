@@ -1,6 +1,6 @@
 import json
 import os
-from id import generar_id
+#from id import generar_id
 
 ARCHIVO = "parientes.json"
 
@@ -36,7 +36,7 @@ def agregar_usuario():
     usuarios = cargar_usuarios()
     
     usuario = {
-        "id": generar_id(usuarios),
+        #"id": generar_id(usuarios),
         "nombre": nombre,
         "edad": edad,
         "parentesco": parentesco,

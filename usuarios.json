@@ -6,5 +6,10 @@
     {
         "usuario": "Samuel",
         "contraseña": "1234"
+    },
+    {
+        "nombre": "Leonardo",
+        "CorreoElectronico": "le@gmail",
+        "contrasena": "159"
     }
 ]

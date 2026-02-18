@@ -1,12 +1,12 @@
 import time
 import json
-from registro import registrar, login
-from cierre_sesion import cerrar_sesion
-from operacion_actualizar import actualizar_persona
-from operacion_quitar import quitar_persona
-from parientes_info import agregar_usuario, cargar_usuarios
-from listar import listado
-from info_rama import listar_info_arbol
+import registro
+import cierre_sesion 
+import operacion_actualizar 
+import operacion_quitar 
+import parientes_info
+import listar
+import info_rama
 
 def login():
     while True:
@@ -19,6 +19,7 @@ def login():
 
             for u in emails:
                 if u["CorreoElectronico"] == CorreoElectronico and u["contrasena"] == contrasena:
+                    menu(u)
                     return u
             
             print("Usuario o contrasena incorrectos\n")
@@ -38,7 +39,7 @@ def menu(usuario):
             print("\n" + "="*50)
             print("Bienvenido al sistema")
             print("="*50)
-            print("Que desea hacer: ")
+            print("Qué desea hacer: ")
             print("1. Crear un nuevo usuario")
             print("2. Anadir un familiar")
             print("3. Eliminar un familiar")
@@ -51,21 +52,21 @@ def menu(usuario):
             opcion = int(input("Ingrese su opcion: "))
             
             if opcion == 1:
-                registrar()
+                registro.registrar()
             elif opcion == 2:
-                agregar_usuario()
+                parientes_info.agregar_usuario()
             elif opcion == 3:
-                familiares = cargar_usuarios()
-                quitar_persona(familiares)
+                familiares = parientes_info.cargar_usuarios()
+                operacion_quitar.quitar_persona(familiares)
             elif opcion == 4:
-                familiares = cargar_usuarios()
-                actualizar_persona(familiares)
+                familiares = parientes_info.cargar_usuarios()
+                operacion_actualizar.actualizar_persona(familiares)
             elif opcion == 5:
-                listado()
+                listar.listado()
             elif opcion == 6:
-                listar_info_arbol()
+                info_rama.listar_info_arbol()
             elif opcion == 7:
-                cerrar_sesion()
+                cierre_sesion.cerrar_sesion()
                 time.sleep(2)
                 break
             else:
@@ -95,7 +96,7 @@ def main():
             opcion = input("Seleccione una opcion: ")
             
             if opcion == "1":
-                registrar()
+                registro.registrar()
             elif opcion == "2":
                 usuario = login()
                 if usuario is not None:
